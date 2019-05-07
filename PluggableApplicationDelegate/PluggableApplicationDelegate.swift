@@ -146,7 +146,7 @@ public extension PluggableApplicationDelegate {
 
 public extension PluggableApplicationDelegate {
 
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         return lazyServices.reduce(false) { prev, service in
             return prev || service.application(application, open: url, options: options ?? [:])
         }
